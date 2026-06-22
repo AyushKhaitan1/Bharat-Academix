@@ -25,15 +25,22 @@ try {
   console.log('[+] Creating staging area: ./AcademixIQ_Staging');
   fs.mkdirSync(stagingDir, { recursive: true });
 
-  // 3. Define copying logic with exclusions
+  // 3. Define copying logic with strict inclusions for root and exclusions for nested
+  const allowedRootItems = [
+    'backend',
+    'frontend',
+    'TECHNICAL_DOCUMENTATION.pdf',
+    'TECHNICAL_DOCUMENTATION.md',
+    'AcademixIQ_Pitch_Deck.pptx',
+    'DEMO_VIDEO_LINK.txt',
+    'README.md'
+  ];
+
   const excludePatterns = [
     'node_modules',
     'dist',
     '.git',
     '.env',
-    'AcademixIQ_Staging',
-    'AcademixIQ_Submission_Package.zip',
-    'package-lock.json',
     '.gemini',
     'temp'
   ];
@@ -41,8 +48,17 @@ try {
   function shouldCopy(src) {
     const relative = path.relative(workspaceDir, src);
     if (!relative) return true;
+    
+    const parts = relative.split(path.sep);
+    const rootItem = parts[0];
+    
+    // Strict root level inclusion check
+    if (!allowedRootItems.includes(rootItem)) {
+      return false;
+    }
+    
+    // Nested exclusion check
     return !excludePatterns.some(pat => {
-      const parts = relative.split(path.sep);
       return parts.includes(pat) || parts.some(p => p.startsWith(pat));
     });
   }
@@ -92,10 +108,9 @@ try {
   console.log('Package contents checklist:');
   console.log('  [x] Frontend Source Code (Vite/React/TS)');
   console.log('  [x] Backend Source Code (Express/Node.js)');
-  console.log('  [x] Technical Documentation (TECHNICAL_DOCUMENTATION.md)');
-  console.log('  [x] Presentation Script (PITCH_SPEECH.md)');
-  console.log('  [x] Presentation Pitch Deck (AcademixIQ_Pitch_Deck_v2.pptx)');
-  console.log('  [x] Interactive Mockups & Readme guide');
+  console.log('  [x] Technical Documentation (TECHNICAL_DOCUMENTATION.pdf & .md)');
+  console.log('  [x] Presentation Pitch Deck (AcademixIQ_Pitch_Deck.pptx)');
+  console.log('  [x] Project Demo Video Link (DEMO_VIDEO_LINK.txt)');
   console.log('========================================================');
 
 } catch (error) {
