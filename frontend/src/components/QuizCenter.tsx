@@ -27,6 +27,8 @@ interface QuizCenterProps {
   onClose: () => void;
 }
 
+const API_BASE = import.meta.env.DEV ? 'http://localhost:5000' : '';
+
 export const QuizCenter: React.FC<QuizCenterProps> = ({
   topic,
   nodeId,
@@ -51,7 +53,7 @@ export const QuizCenter: React.FC<QuizCenterProps> = ({
   const startQuiz = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/generate-quiz', {
+      const response = await fetch(`${API_BASE}/api/generate-quiz`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

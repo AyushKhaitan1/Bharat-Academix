@@ -99,6 +99,8 @@ const INITIAL_MINDMAP_DATA = {
   }
 };
 
+const API_BASE = import.meta.env.DEV ? 'http://localhost:5000' : '';
+
 function App() {
   // Accessibility States
   const [dyslexiaMode, setDyslexiaMode] = useState(false);
@@ -181,7 +183,7 @@ function App() {
   const buildMindmap = async (topicStr: string, notesContent?: string) => {
     setIsBuildingMap(true);
     try {
-      const response = await fetch('http://localhost:5000/api/generate-mindmap', {
+      const response = await fetch(`${API_BASE}/api/generate-mindmap`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -225,7 +227,7 @@ function App() {
       // Prompt Gemini to output additional detailed sub-nodes for this specific node
       const currentPrompt = `Explain more detailed concepts relating to "${nodeLabel}" within the topic of "${currentTopic}"`;
       
-      const response = await fetch('http://localhost:5000/api/generate-mindmap', {
+      const response = await fetch(`${API_BASE}/api/generate-mindmap`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -359,7 +361,7 @@ function App() {
     formData.append('file', uploadFile);
 
     try {
-      const response = await fetch('http://localhost:5000/api/upload', {
+      const response = await fetch(`${API_BASE}/api/upload`, {
         method: 'POST',
         body: formData
       });

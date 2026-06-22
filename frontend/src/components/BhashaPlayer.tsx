@@ -22,6 +22,8 @@ const DEMO_LECTURE_PAGES = [
   "Finally, these three-carbon sugars are combined to assemble glucose, which serves as the chemical food storage for the plant's biological activities."
 ];
 
+const API_BASE = import.meta.env.DEV ? 'http://localhost:5000' : '';
+
 export const BhashaPlayer: React.FC<BhashaPlayerProps> = ({ onTranslatedText }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(REGIONAL_LANGUAGES[0]);
@@ -68,7 +70,7 @@ export const BhashaPlayer: React.FC<BhashaPlayerProps> = ({ onTranslatedText }) 
   // Translate API handler
   const translateText = async (text: string) => {
     try {
-      const response = await fetch('http://localhost:5000/api/translate', {
+      const response = await fetch(`${API_BASE}/api/translate`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
