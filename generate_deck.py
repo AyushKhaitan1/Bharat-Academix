@@ -130,18 +130,18 @@ team_box = slide1.shapes.add_textbox(Inches(1.0), Inches(5.2), Inches(6.0), Inch
 tf_team = team_box.text_frame
 tf_team.word_wrap = True
 pt1 = tf_team.paragraphs[0]
-pt1.text = "Team: Team Academix"
+pt1.text = "Team: ayushkhaitan2004"
 pt1.font.name = "Arial"
 pt1.font.bold = True
 pt1.font.size = Pt(14)
 pt1.font.color.rgb = EMERALD
 pt2 = tf_team.add_paragraph()
-pt2.text = "Solo Innovator: Ayush Khaitan"
+pt2.text = "Solo Innovator: Ayush Khaitan  |  SRMIST Ghaziabad"
 pt2.font.name = "Arial"
 pt2.font.size = Pt(13)
 pt2.font.color.rgb = WHITE
 pt3 = tf_team.add_paragraph()
-pt3.text = "Themes: EdTech, AI/ML, Accessibility"
+pt3.text = "Themes: EdTech, AI/ML, Accessibility & Inclusion"
 pt3.font.name = "Arial"
 pt3.font.size = Pt(11)
 pt3.font.color.rgb = TEXT_MUTED
@@ -364,7 +364,7 @@ pmid.font.size = Pt(16)
 pmid.font.color.rgb = EMERALD
 pmid.space_after = Pt(15)
 
-mid_pts = ["• Whisper Large v3 STT", "• Gemini Pro (JSON/Context Extraction)", "• LangChain RAG Search", "• Speech-to-Speech Engine", "• Graph-modeling algorithms"]
+mid_pts = ["• Web Speech API (SpeechRecognition)", "• Google Gemini 2.5 Flash SDK", "• Dynamic Node Expansion logic", "• Web Speech API (SpeechSynthesis TTS)", "• Express Node.js Backend Server"]
 for pt in mid_pts:
     p = tf_mid.add_paragraph()
     p.text = pt
@@ -407,16 +407,16 @@ add_full_background(slide6, OFF_WHITE)
 add_header(slide6, "The Scalable Technology Stack")
 
 stacks = [
-    ("FRONTEND (REACT)", "Building responsive, highly accessible student portals.", 
-     ["• React.js & Redux Toolkit", "• Tailwind CSS (Glassmorphism)", "• Lucide React Icons", "• Canvas & D3.js (Mind maps)", "• WebRTC API (Audio streams)"], 
+    ("FRONTEND (REACT)", "Highly accessible, interactive user interface.", 
+     ["• React.js & TypeScript", "• Tailwind CSS (Glassmorphism)", "• HTML5 Canvas (VisualMind Graph)", "• Web Speech API (STT Transcription)", "• Web Speech API (TTS Vocalizer)"], 
      Inches(0.8), Inches(1.8)),
      
-    ("BACKEND (NODE & AI)", "Powering express services and LLM orchestration.", 
-     ["• Node.js & Express.js", "• LangChain.js / LlamaIndex", "• Gemini Pro & OpenAI API", "• Deepgram / Whisper API", "• Socket.io (Real-time updates)"], 
+    ("BACKEND & AI", "Express middleware and Gemini LLM integrations.", 
+     ["• Node.js & Express.js", "• Google Gemini 2.5 Flash SDK", "• Multer File Ingestor", "• Dynamic Quiz Generator", "• Dynamic Translation endpoints"], 
      Inches(4.9), Inches(1.8)),
      
-    ("DATABASE & CLOUD", "Ensuring data persistence and fast edge-deploys.", 
-     ["• MongoDB Atlas (NoSQL database)", "• Redis Cache (Session management)", "• AWS S3 (Lecture audio storage)", "• Render / AWS EC2", "• Docker Containerization"], 
+    ("UTILITIES & DEPLOY", "Staging, documentation, and cloud execution.", 
+     ["• reportlab (PDF Compiler)", "• python-pptx (Deck Generator)", "• Git & GitHub Version Control", "• Render Cloud Web Services", "• Unified MERN static delivery"], 
      Inches(9.0), Inches(1.8))
 ]
 
