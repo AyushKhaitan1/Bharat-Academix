@@ -1,0 +1,8 @@
+node_modules
+backend/.env
+AcademixIQ_Submission_Package.zip
+AcademixIQ_Staging
+dist
+.gemini
+temp
+*.log

@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ----------------------------------------------------
+   Core Design System & Theme Customizations
+   ---------------------------------------------------- */
+@theme {
+  --color-bg-primary: #0a192f;
+  --color-bg-card: rgba(16, 28, 48, 0.6);
+  --color-accent-primary: #10b981;
+  --color-accent-hover: #059669;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-border-glass: rgba(16, 185, 129, 0.2);
+}
+
+/* Custom fonts & Dyslexia support */
+
+body {
+  font-family: 'Outfit', 'Lexend', -apple-system, sans-serif;
+  background-color: #070f1e;
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a192f;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.7);
+}
+
+/* ----------------------------------------------------
+   Premium Glassmorphism & Glo Utilities
+   ---------------------------------------------------- */
+.glass-panel {
+  background: rgba(10, 25, 47, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-emerald {
+  background: rgba(16, 28, 48, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.05);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+}
+
+.glow-emerald-text {
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.glow-pulse {
+  animation: glow-pulse-anim 3s infinite alternate;
+}
+
+@keyframes glow-pulse-anim {
+  0% {
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.45);
+    border-color: rgba(16, 185, 129, 0.4);
+  }
+}
+
+/* ----------------------------------------------------
+   Accessibility Core Classes
+   ---------------------------------------------------- */
+
+/* Dyslexia Mode Settings: uses large word spacing, line height, and a dyslexia-optimized layout */
+.accessibility-dyslexia {
+  font-family: 'Lexend', cursive, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.15em !important;
+  word-spacing: 0.3em !important;
+  line-height: 2.0 !important;
+}
+
+.accessibility-dyslexia p, 
+.accessibility-dyslexia span, 
+.accessibility-dyslexia li, 
+.accessibility-dyslexia h1, 
+.accessibility-dyslexia h2, 
+.accessibility-dyslexia h3, 
+.accessibility-dyslexia button, 
+.accessibility-dyslexia input {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.25em !important;
+  line-height: 1.8 !important;
+}
+
+/* ADHD Focus Ruler styling */
+.adhd-focus-ruler {
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  height: 48px;
+  pointer-events: none;
+  background: rgba(16, 185, 129, 0.12);
+  border-top: 2px solid rgba(16, 185, 129, 0.6);
+  border-bottom: 2px solid rgba(16, 185, 129, 0.6);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+  transform: translateY(-50%);
+  z-index: 9999;
+  transition: top 0.05s ease-out;
+}
+
+.adhd-dimmer-top {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  z-index: 9998;
+  transition: height 0.05s ease-out;
+}
+
+.adhd-dimmer-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  z-index: 9998;
+  transition: top 0.05s ease-out;
+}
+
+/* Colorblind Modes overrides */
+.theme-protanopia {
+  filter: url('#protanopia-filter') !important;
+}
+.theme-deuteranopia {
+  filter: url('#deuteranopia-filter') !important;
+}
+.theme-tritanopia {
+  filter: url('#tritanopia-filter') !important;
+}
+.theme-high-contrast {
+  --color-bg-primary: #000000;
+  --color-bg-card: #000000;
+  --color-accent-primary: #ffff00;
+  --color-accent-hover: #ffffff;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #ffffff;
+  border-color: #ffffff !important;
+}
+.theme-high-contrast .glass-panel, 
+.theme-high-contrast .glass-panel-emerald {
+  background: #000000 !important;
+  border: 2px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Micro Animations */
+.hover-scale {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+}
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+/* D3 Mindmap SVG styles */
+.node-circle {
+  transition: fill 0.3s, stroke 0.3s, r 0.3s;
+  cursor: pointer;
+}
+.node-circle:hover {
+  filter: brightness(1.2);
+}
+.link-line {
+  stroke-dasharray: 5;
+  animation: dash 15s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
